@@ -21,6 +21,8 @@ Route::get('/admin', 'Admin\HomeController@index')->middleware('auth')->name('ad
 Route::middleware('auth')->name('admin.')->namespace('Admin')->prefix('admin')->group(function (){
     Route::get('/', 'HomeController@index')->name('home');
 
+    Route::resource('posts', 'PostController');
+
     Route::get('/{any}', function(){
         abort(404);
     })->where('any', '.*');
