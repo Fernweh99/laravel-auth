@@ -13,15 +13,17 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('guest.home');
-})->name('guest.home');
-
 Auth::routes(['register' => false]);
 
 Route::get('/admin', 'Admin\HomeController@index')->middleware('auth')->name('admin.home');
 
-// Resource posts
+// Resource admin
 Route::middleware('auth')->name('admin.')->namespace('Admin')->prefix('admin')->group(function (){
     Route::get('/', 'HomeController@index')->name('home');
+
+    Route::get('/{any}', function(){
+        abort(404);
+    })->where('any', '.*');
 });
+
+Route::get('/{any}', 'Guest\HomeController@index')->name('guest.home')->where('any', '.*');
