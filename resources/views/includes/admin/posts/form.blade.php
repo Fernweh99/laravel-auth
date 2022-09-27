@@ -1,5 +1,9 @@
+@if($post->exists)
 <form action="{{route('admin.posts.update', $post)}}" method="POST">
   @method('PUT')
+@else
+<form action="{{route('admin.posts.store')}}" method="POST">
+@endif
   @csrf 
     <div class="row mb-3">
       <label for="title" class="col-sm-2 col-form-label">Titolo</label>

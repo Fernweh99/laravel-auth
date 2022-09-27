@@ -3,6 +3,9 @@
 @section('content')
 <div class="row justify-content-center">
   <div class="col-md-8">
+    <div class="d-flex justify-content-center">
+      <a class="btn btn-primary mb-4" href="{{route('admin.posts.create')}}">Crea Post</a>
+    </div>
     <table class="table">
       <thead>
         <tr>
