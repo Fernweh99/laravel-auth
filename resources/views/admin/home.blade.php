@@ -19,5 +19,8 @@
             </div>
         </div>
     </div>
+    <div class="d-flex justify-content-center mt-5">    
+        <a class="btn btn-primary" href="{{route('admin.posts.index')}}">Vai ai post</a>
+    </div>
 </div>
 @endsection
