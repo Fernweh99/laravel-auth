@@ -28,9 +28,13 @@
           <a class="btn btn-warning" href="{{route('admin.posts.edit', $post)}}">
             <i class="fa-regular fa-pen-to-square"></i>Modifica
           </a>
-          <a class="btn btn-danger" href="#">
-            <i class="fa-solid fa-trash"></i>Elimina
-          </a>
+          <form class="d-inline-block" action="{{route('admin.posts.destroy', $post)}}" method="POST">
+            @method('DELETE')
+            @csrf  
+            <button type="submit" class="btn btn-danger">
+              <i class="fa-solid fa-trash"></i>Elimina
+            </button>
+          </form>
         </div>
       </div>
     </div>
