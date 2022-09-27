@@ -32,9 +32,13 @@
             <a class="btn btn-warning btn-sm" href="{{route('admin.posts.edit', $post)}}">
               <i class="fa-regular fa-pen-to-square"></i>
             </a>
-            <a class="btn btn-danger btn-sm" href="#">
-              <i class="fa-solid fa-trash"></i>
-            </a>
+            <form class="d-inline-block" action="{{route('admin.posts.destroy', $post)}}" method="POST">
+              @method('DELETE')
+              @csrf  
+              <button type="submit" class="btn btn-danger btn-sm">
+                <i class="fa-solid fa-trash"></i>
+              </button>
+            </form>
           </td>
         </tr>
         @endforeach
