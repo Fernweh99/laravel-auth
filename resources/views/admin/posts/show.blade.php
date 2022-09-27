@@ -25,7 +25,7 @@
           </a>
         </div>
         <div>
-          <a class="btn btn-warning" href="#">
+          <a class="btn btn-warning" href="{{route('admin.posts.edit', $post)}}">
             <i class="fa-regular fa-pen-to-square"></i>Modifica
           </a>
           <a class="btn btn-danger" href="#">

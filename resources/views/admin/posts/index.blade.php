@@ -26,7 +26,7 @@
             <a class="btn btn-primary btn-sm" href="{{route('admin.posts.show', $post)}}">
               <i class="fa-regular fa-eye"></i>
             </a>
-            <a class="btn btn-warning btn-sm" href="#">
+            <a class="btn btn-warning btn-sm" href="{{route('admin.posts.edit', $post)}}">
               <i class="fa-regular fa-pen-to-square"></i>
             </a>
             <a class="btn btn-danger btn-sm" href="#">
