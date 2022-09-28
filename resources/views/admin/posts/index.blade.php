@@ -11,7 +11,7 @@
         <tr>
           <th scope="col">#</th>
           <th scope="col">title</th>
-          <th scope="col">slug</th>
+          <th scope="col">category</th>
           <th scope="col">created_at</th>
           <th scope="col">last_update</th>
           <th scope="col"></th>
@@ -22,7 +22,7 @@
         <tr>
           <th scope="row">{{$post->id}}</th>
           <td>{{$post->title}}</td>
-          <td>{{$post->slug}}</td>
+          <td>{{$post->category->label}}</td>
           <td>{{$post->created_at}}</td>
           <td>{{$post->updated_at}}</td>
           <td>
