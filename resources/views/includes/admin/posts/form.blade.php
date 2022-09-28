@@ -1,3 +1,13 @@
+@if($errors->any())
+<div class="alert alert-danger" role="alert">
+  <ul>
+    @foreach ($errors->all() as $error)
+    <li>{{$error}}</li>
+    @endforeach
+  </ul>
+</div>
+@endif
+
 @if($post->exists)
 <form action="{{route('admin.posts.update', $post)}}" method="POST">
   @method('PUT')
@@ -7,8 +17,17 @@
   @csrf 
     <div class="row mb-3">
       <label for="title" class="col-sm-2 col-form-label">Titolo</label>
-      <div class="col-sm-10">
+      <div class="col-sm-5">
         <input type="text" class="form-control" id="title" name="title" value="{{old('title', $post->title)}}">
+      </div>
+      <label for="category_id" class="col-sm-2 col-form-label">Category</label>
+      <div class="col-sm-3">
+        <select class="custom-select" name="category_id" id="category_id">
+          <option value="">Nessuna</option>
+          @foreach($categories as $category)
+          <option @if(old('category_id', $post->category->id) == $category->id) selected @endif value="{{$category->id}}">{{$category->label}}</option>
+          @endforeach
+        </select>
       </div>
     </div>
     <div class="row mb-3 align-items-center">

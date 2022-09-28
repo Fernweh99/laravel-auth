@@ -29,7 +29,8 @@ class PostController extends Controller
     public function create()
     {
         $post = new Post();
-        return view('admin.posts.create', compact('post'));
+        $categories = Category::select('id', 'label')->get();
+        return view('admin.posts.create', compact('post', 'categories'));
     }
 
     /**
@@ -40,6 +41,23 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
+        $request->validate(
+            [
+                'title' => 'required|string|min:5|max:50',
+                'content' => 'required|string',
+                'image' => 'nullable|url',
+                'category_id' => 'nullable|exists:categories,id'
+            ],
+            [
+                'title.required' => 'Devi inserire il titolo',
+                'title.min' => 'il titolo deve essere minimo :min caratteri',
+                'title.max' => 'il titolo deve essere massimo :max caratteri',
+                'content.required' => 'Devi inserire il contenuto',
+                'image.url' => 'l\'url immagine non è valido',
+                'category_id.exists' => 'non esiste una categoria assosiabile'
+            ]
+        );
+
         $data = $request->all();
         $post = new Post();
         $post->fill($data);
@@ -68,7 +86,8 @@ class PostController extends Controller
      */
     public function edit(Post $post)
     {
-        return view('admin.posts.edit', compact('post'));
+        $categories = Category::select('id', 'label')->get();
+        return view('admin.posts.edit', compact('post', 'categories'));
     }
 
     /**
@@ -80,6 +99,23 @@ class PostController extends Controller
      */
     public function update(Request $request, Post $post)
     {
+        $request->validate(
+            [
+                'title' => 'required|string|min:5|max:50',
+                'content' => 'required|string',
+                'image' => 'nullable|url',
+                'category_id' => 'nullable|exists:categories,id'
+            ],
+            [
+                'title.required' => 'Devi inserire il titolo',
+                'title.min' => 'il titolo deve essere minimo :min caratteri',
+                'title.max' => 'il titolo deve essere massimo :max caratteri',
+                'content.required' => 'Devi inserire il contenuto',
+                'image.url' => 'l\'url immagine non è valido',
+                'category_id.exists' => 'non esiste una categoria assosiabile'
+            ]
+        );
+
         $data = $request->all();
         $post->slug = Str::slug($data['title'], '-');
         $post->update($data);

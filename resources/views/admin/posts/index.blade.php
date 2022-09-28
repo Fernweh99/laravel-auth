@@ -22,7 +22,7 @@
         <tr>
           <th scope="row">{{$post->id}}</th>
           <td>{{$post->title}}</td>
-          <td>{{$post->category->label}}</td>
+          <td>{{$post->category->label ?? 'Nessuna'}}</td>
           <td>{{$post->created_at}}</td>
           <td>{{$post->updated_at}}</td>
           <td>
