@@ -19,13 +19,19 @@ Route::get('/admin', 'Admin\HomeController@index')->middleware('auth')->name('ad
 
 // Resource admin
 Route::middleware('auth')->name('admin.')->namespace('Admin')->prefix('admin')->group(function (){
+    // Home
     Route::get('/', 'HomeController@index')->name('home');
 
+    // Posts
     Route::resource('posts', 'PostController');
 
+    // Categories
+    Route::resource('categories', 'CategoryController');
+    
     Route::get('/{any}', function(){
         abort(404);
     })->where('any', '.*');
+
 });
 
 Route::get('/{any}', 'Guest\HomeController@index')->name('guest.home')->where('any', '.*');

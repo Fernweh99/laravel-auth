@@ -14,7 +14,7 @@
           <th scope="col">category</th>
           <th scope="col">created_at</th>
           <th scope="col">last_update</th>
-          <th scope="col"></th>
+          <th scope="col">bottoni</th>
         </tr>
       </thead>
       <tbody class="table-group-divider">
