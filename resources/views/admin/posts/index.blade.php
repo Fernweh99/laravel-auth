@@ -11,6 +11,7 @@
         <tr>
           <th scope="col">#</th>
           <th scope="col">title</th>
+          <th scope="col">author</th>
           <th scope="col">category</th>
           <th scope="col">created_at</th>
           <th scope="col">last_update</th>
@@ -22,6 +23,7 @@
         <tr>
           <th scope="row">{{$post->id}}</th>
           <td>{{$post->title}}</td>
+          <td>{{$post->user->name}}</td>
           <td>{{$post->category->label ?? 'Nessuna'}}</td>
           <td>{{$post->created_at}}</td>
           <td>{{$post->updated_at}}</td>
