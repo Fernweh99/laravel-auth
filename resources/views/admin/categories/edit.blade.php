@@ -3,8 +3,8 @@
 @section('content')
 <div class="row justify-content-center">
   <div class="col-md-8">
-    <h2>Modifica Post:</h2>
-      @include('includes.admin.posts.form')
+    <h2>Modifica Categoria:</h2>
+      @include('includes.admin.categories.form')
   </div>
 </div>
 @endsection
