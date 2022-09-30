@@ -25,10 +25,32 @@
         <select class="custom-select" name="category_id" id="category_id">
           <option value="">Nessuna</option>
           @foreach($categories as $category)
-          <option @if(old('category_id', $post->category->id) == $category->id) selected @endif value="{{$category->id}}">{{$category->label}}</option>
+          <option @if(old('category_id', $post->category->id ?? '0') == $category->id) selected @endif value="{{$category->id}}">{{$category->label}}</option>
           @endforeach
         </select>
       </div>
+    </div>
+    <div class="row mb-3">
+
+      @if (count($tags))
+      <fieldset class="col-12">
+        <h4>Tags:</h4>
+
+        @foreach ($tags as $tag)
+        <div class="form-check form-check-inline">
+          <input class="form-check-input" 
+          @if (in_array($tag->id, old('tag', $tags_ids))) checked @endif 
+          type="checkbox" 
+          id="tag-{{ $tag->label }}" 
+          name="tag[]" 
+          value="{{ $tag->id }}">
+          <label class="form-check-label" for="tag-{{ $tag->label }}">{{ $tag->label }}</label>
+        </div>
+        @endforeach
+
+      </fieldset>
+      @endif
+
     </div>
     <div class="row mb-3 align-items-center">
       <label for="image" class="col-sm-2 col-form-label">Url Img</label>

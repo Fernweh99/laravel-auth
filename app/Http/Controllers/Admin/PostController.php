@@ -7,7 +7,8 @@ use Illuminate\Http\Request;
 use App\Models\Post;
 use Illuminate\Support\Str;
 use App\Models\Category;
-
+use App\Models\Tag;
+use Illuminate\Support\Facades\Auth;
 class PostController extends Controller
 {
     /**
@@ -30,7 +31,9 @@ class PostController extends Controller
     {
         $post = new Post();
         $categories = Category::select('id', 'label')->get();
-        return view('admin.posts.create', compact('post', 'categories'));
+        $tags = Tag::select('id', 'label')->get();
+        $tags_ids = [];
+        return view('admin.posts.create', compact('post', 'categories', 'tags', 'tags_ids'));
     }
 
     /**
@@ -62,7 +65,9 @@ class PostController extends Controller
         $post = new Post();
         $post->fill($data);
         $post->slug = Str::slug($post->title, '-');
+        $post->user_id = Auth::id();
         $post->save();
+        $post->tags()->attach($data['tag']);
 
         return redirect()->route('admin.posts.show', $post);
     }
@@ -87,7 +92,9 @@ class PostController extends Controller
     public function edit(Post $post)
     {
         $categories = Category::select('id', 'label')->get();
-        return view('admin.posts.edit', compact('post', 'categories'));
+        $tags = Tag::select('id', 'label')->get();
+        $tags_ids = $post->tags->pluck('id')->toArray();
+        return view('admin.posts.edit', compact('post', 'categories', 'tags', 'tags_ids'));
     }
 
     /**
@@ -120,6 +127,7 @@ class PostController extends Controller
         $post->slug = Str::slug($data['title'], '-');
         $post->update($data);
         $post->save();
+        $post->tags()->sync($data['tag']);
 
         return redirect()->route('admin.posts.show', $post);
     }

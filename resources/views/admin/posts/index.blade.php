@@ -13,6 +13,7 @@
           <th scope="col">title</th>
           <th scope="col">author</th>
           <th scope="col">category</th>
+          <th scope="col">tags</th>
           <th scope="col">created_at</th>
           <th scope="col">last_update</th>
           <th scope="col">bottoni</th>
@@ -23,8 +24,16 @@
         <tr>
           <th scope="row">{{$post->id}}</th>
           <td>{{$post->title}}</td>
-          <td>{{$post->user->name}}</td>
+          <td>{{$post->user->name ?? 'anonimo'}}</td>
           <td>{{$post->category->label ?? 'Nessuna'}}</td>
+          <td>
+            @forelse ($post->tags as $tag)
+            <span class="badge badge-pill" style="background-color: {{$tag->color}}">{{$tag->label}}</span> 
+            @empty
+              Nessuno
+            @endforelse
+                
+          </td>
           <td>{{$post->created_at}}</td>
           <td>{{$post->updated_at}}</td>
           <td>
