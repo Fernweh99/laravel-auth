@@ -13,6 +13,13 @@
             <div class="card-body">
               <h5 class="card-title">{{$post->title}}</h5>
               <p class="card-text"><strong>Categoria: </strong>{{$post->category->label ?? 'Nessuna'}}</p>
+              <p class="card-text"><strong>Tag:</strong>
+                @forelse ($post->tags as $tag)
+                  {{$tag->label}}
+                @empty
+                  -
+                @endforelse
+              </p>
               <p class="card-text">{{$post->content}}</p>
               <p class="card-text">Last Update: <small class="text-muted">{{$post->updated_at}}</small></p>
             </div>
