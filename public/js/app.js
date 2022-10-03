@@ -37362,7 +37362,7 @@ var deleteForms = document.querySelectorAll('.delete-form');
 deleteForms.forEach(function (form) {
   form.addEventListener('submit', function (event) {
     event.preventDefault();
-    var hasConfirm = confirm('Sei sicuro di voler eliminare questo post?');
+    var hasConfirm = confirm('Sei sicuro di voler eliminare questo elemento?');
     if (hasConfirm) form.submit();
   });
 });

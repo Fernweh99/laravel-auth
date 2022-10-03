@@ -20,7 +20,9 @@
         <tr>
           <th scope="row">{{$tag->id}}</th>
           <td>{{$tag->label ?? 'Nessuna'}}</td>
-          <td>{{$tag->color}}</td>
+          <td>
+            <div class="square" style='background-color:{{$tag->color}}'></div>
+          </td>
           <td class="text-center">
             <a class="btn btn-primary btn-sm" href="{{route('admin.tags.show', $tag)}}">
               <i class="fa-regular fa-eye"></i>

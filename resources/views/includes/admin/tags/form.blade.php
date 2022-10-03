@@ -22,7 +22,7 @@
       </div>
       <label for="color" class="col-sm-2 col-form-label">Colore</label>
       <div class="col-sm-4">
-        <input type="text" class="form-control" id="color" name="color" value="{{old('color', $tag->color)}}">
+        <input type="color" class="form-control" id="color" name="color" value="{{old('color', $tag->color)}}">
       </div>
     </div>
     <div class="d-flex justify-content-between mb-3">
