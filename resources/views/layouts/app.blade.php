@@ -40,6 +40,9 @@
                         <li class="nav-item">
                             <a class="nav-link {{ Request::is('admin/categories*') ? 'active' : '' }}" href="{{ route('admin.categories.index') }}">Categories</a>
                         </li>
+                        <li class="nav-item">
+                            <a class="nav-link {{ Request::is('admin/tags*') ? 'active' : '' }}" href="{{ route('admin.tags.index') }}">Tags</a>
+                        </li>
                     </ul>
 
                     <!-- Right Side Of Navbar -->

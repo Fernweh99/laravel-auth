@@ -25,6 +25,9 @@ Route::middleware('auth')->name('admin.')->namespace('Admin')->prefix('admin')->
     // Posts
     Route::resource('posts', 'PostController');
 
+    // Tags
+    Route::resource('tags', 'TagController');
+
     // Categories
     Route::resource('categories', 'CategoryController');
     
