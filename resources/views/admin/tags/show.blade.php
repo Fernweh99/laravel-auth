@@ -16,15 +16,15 @@
       </div>
       <div class="d-flex justify-content-between">
         <div>
-          <a class="btn btn-secondary" href="{{route('admin.categories.index')}}">
+          <a class="btn btn-secondary" href="{{route('admin.tags.index')}}">
             <i class="fa-solid fa-rotate-left mr-2"></i>Torna indietro
           </a>
         </div>
         <div>
-          <a class="btn btn-warning" href="{{route('admin.categories.edit', $tag)}}">
+          <a class="btn btn-warning" href="{{route('admin.tags.edit', $tag)}}">
             <i class="fa-regular fa-pen-to-square"></i>Modifica
           </a>
-          <form class="d-inline-block delete-form" action="{{route('admin.categories.destroy', $tag)}}" method="POST">
+          <form class="d-inline-block delete-form" action="{{route('admin.tags.destroy', $tag)}}" method="POST">
             @method('DELETE')
             @csrf  
             <button type="submit" class="btn btn-danger">
